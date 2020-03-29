@@ -39,27 +39,27 @@ class Grid:
 
 
     def getNeighbors(self, x, y):
-
+        print(self.size - 1)
         if (0 < x < self.size - 1) and (0 < y < self.size - 1):
-            return {(x, y + 1): 10, (x, y - 1): 10, (x + 1, y): 10, (x - 1, y): 10}
+            return {(x, y + 1): 10, (x, y - 1): 10, (x + 1, y): 10, (x - 1, y): 10, (x - 1, y - 1): 10, (x - 1, y + 1): 10, (x + 1, y - 1): 10, (x + 1, y + 1): 10}
 
         if x == 0:
             if y == 0:
-                return {(0, 1): 10, (1, 0): 10}
+                return {(0, 1): 10, (1, 0): 10, (1, 1): 10}
             elif y == self.size - 1:
-                return {(0, y - 1): 10, (1, y): 10}
+                return {(0, y - 1): 10, (1, y): 10, (1, y - 1): 10}
             else:
-                return {(0, y - 1): 10, (0, y + 1): 10, (1, y): 10}
+                return {(0, y - 1): 10, (0, y + 1): 10, (1, y): 10, (1, y - 1): 10, (1, y + 1): 10}
         elif x == self.size - 1:
             if y == 0:
-                return {(x, 1): 10, (x - 1, 0): 10}
+                return {(x, 1): 10, (x - 1, 0): 10, (x - 1, 1): 10}
             elif y == self.size - 1:
-                return {(x, y - 1): 10, (x - 1, y): 10}
+                return {(x, y - 1): 10, (x - 1, y): 10, (x - 1, y - 1): 10}
             else:
-                return {(x, y - 1): 10, (x, y + 1): 10, (x - 1, y): 10}
+                return {(x, y - 1): 10, (x, y + 1): 10, (x - 1, y): 10, (x - 1, y - 1): 10, (x - 1, y + 1): 10}
         else:
             if y == 0:
-                return {(x - 1, y): 10, (x + 1, y): 10, (x, y + 1): 10}
+                return {(x - 1, y): 10, (x + 1, y): 10, (x, y + 1): 10, (x - 1, 1): 10, (x + 1, 1): 10}
             elif y == self.size - 1:
-                return {(x - 1, y): 10, (x + 1, y): 10, (x, y - 1): 10}
+                return {(x - 1, y): 10, (x + 1, y): 10, (x, y - 1): 10, (x - 1, y - 1): 10, (x + 1, y - 1): 10}
             
