@@ -4,6 +4,7 @@ from heapq import heappop
 def relax(W, u, v, D, P):
     inf = float('inf')
     d = D.get(u, inf) + W.getNeighbors(u[0], u[1])[v]
+    #If the square is a barrier, avoid it with high 'd' value
     if W.getColor(v[0], v[1]) == (0, 0, 0):
         d = 100000
     if d < D.get(v, inf):

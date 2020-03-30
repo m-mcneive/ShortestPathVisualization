@@ -46,6 +46,7 @@ class Grid:
 
 
     #Returns neighbors of a cell based on position and distance values, diagonal values found with Pythagorean Theorem
+    #i.e. 40 = value for going along a side and 56 = value for moving diagonally
     def getNeighbors(self, x, y):
         if (0 < x < self.size - 1) and (0 < y < self.size - 1):
             return {(x, y + 1): 40, (x, y - 1): 40, (x + 1, y): 40, (x - 1, y): 40, (x - 1, y - 1): 56, (x - 1, y + 1): 56, (x + 1, y - 1): 56, (x + 1, y + 1): 56}
