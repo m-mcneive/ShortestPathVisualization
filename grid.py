@@ -14,12 +14,14 @@ class Grid:
         self.grid = []
         self.size = size
         temp = []
+        #Creates 2d array with all values set to 0
         for i in range(size):
             for j in range(size):
                 temp.append(0)
             self.grid.append(temp)
             temp = []
 
+    #returns rgb color based on value in array (colors listed above)
     def getColor(self, x, y):
         if self.grid[x][y] == 0:
             return (255, 255, 255)
@@ -34,13 +36,16 @@ class Grid:
         else:
             return (0, 0, 255)
 
+    #Sets numerical value in array (value meanings listed above)
     def setValue(self, x, y, val):
         self.grid[x][y] = val
 
+    #Returns row of the array
     def getRow(self, row):
         return self.grid[row]
 
 
+    #Returns neighbors of a cell based on position and distance values, diagonal values found with Pythagorean Theorem
     def getNeighbors(self, x, y):
         if (0 < x < self.size - 1) and (0 < y < self.size - 1):
             return {(x, y + 1): 40, (x, y - 1): 40, (x + 1, y): 40, (x - 1, y): 40, (x - 1, y - 1): 56, (x - 1, y + 1): 56, (x + 1, y - 1): 56, (x + 1, y + 1): 56}
