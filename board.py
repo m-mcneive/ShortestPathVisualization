@@ -59,6 +59,8 @@ while True:
         if event.type == pygame.MOUSEBUTTONUP:
             
             if not start:
+                if startCell:
+                    g.setValue(startCell[0], startCell[1], 0)
                 pos = pygame.mouse.get_pos()
                 x = pos[0] // totalCellDimension
                 y = pos[1] // totalCellDimension
@@ -66,6 +68,8 @@ while True:
                 startCell = (x, y)
                 print(g.getNeighbors(x, y))
             elif not target:
+                if targetCell:
+                    g.setValue(targetCell[0], targetCell[1], 0)
                 pos = pygame.mouse.get_pos()
                 x = pos[0] // totalCellDimension
                 y = pos[1] // totalCellDimension
