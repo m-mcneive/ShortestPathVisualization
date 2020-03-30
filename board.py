@@ -17,11 +17,11 @@ totalCellDimension = cellWidth + cellMargin
 numCellsInRow = SCREEN_WIDTH // totalCellDimension
 
 g = Grid(numCellsInRow)
-print(g.getNeighbors(19, 4))
 
 startCell, targetCell = None, None
 start = False
 target = False
+blocked = False
 done = False
 searched = False
 
@@ -52,9 +52,11 @@ while True:
         if event.type == pygame.KEYDOWN:
             if not start:
                 start = True
-                continue
             elif not target:
                 target = True
+            elif not blocked:
+                blocked = True
+
         # handle MOUSEBUTTONUP
         if event.type == pygame.MOUSEBUTTONUP:
             
@@ -66,7 +68,8 @@ while True:
                 y = pos[1] // totalCellDimension
                 g.setValue(x, y, 1)
                 startCell = (x, y)
-                print(g.getNeighbors(x, y))
+                continue
+
             elif not target:
                 if targetCell:
                     g.setValue(targetCell[0], targetCell[1], 0)
@@ -75,8 +78,16 @@ while True:
                 y = pos[1] // totalCellDimension
                 g.setValue(x, y, 2)
                 targetCell = (x, y)
+                continue
 
-        if start and target and not searched:
+            elif not blocked:
+                pos = pygame.mouse.get_pos()
+                x = pos[0] // totalCellDimension
+                y = pos[1] // totalCellDimension
+                g.setValue(x, y, 5)
+
+
+        if start and target and blocked and not searched:
             print('searching\n\n')
             a, b = finder.dijkstra(g, startCell)
             currentCell = targetCell

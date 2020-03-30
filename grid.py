@@ -6,6 +6,7 @@ class Grid:
     #2 = target square, red     (255, 0, 0)
     #3 = searched squares, yellow   (255, 255, 0)
     #4 final path, blue     (0, 0, 255)
+    #5 blocked square     (0, 0, 0)
     
 
 
@@ -28,6 +29,8 @@ class Grid:
             return (255, 0, 0)
         elif self.grid[x][y] == 3:
             return (255, 255, 0)
+        elif self.grid[x][y] == 5:
+            return (0, 0, 0)
         else:
             return (0, 0, 255)
 
@@ -39,7 +42,6 @@ class Grid:
 
 
     def getNeighbors(self, x, y):
-        print(self.size - 1)
         if (0 < x < self.size - 1) and (0 < y < self.size - 1):
             return {(x, y + 1): 40, (x, y - 1): 40, (x + 1, y): 40, (x - 1, y): 40, (x - 1, y - 1): 56, (x - 1, y + 1): 56, (x + 1, y - 1): 56, (x + 1, y + 1): 56}
 
